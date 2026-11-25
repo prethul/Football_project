@@ -137,7 +137,26 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 py-5 text-center text-sm text-slate-500">
-          © {toBn(2026)} KNTs Club. সর্বস্বত্ব সংরক্ষিত।
+          <p>© {toBn(2026)} KNTs Club. সর্বস্বত্ব সংরক্ষিত।</p>
+          <div className="mt-3 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
+            <a
+              href="https://portfolio-pkdk.onrender.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-slate-400 transition hover:text-neon-300"
+            >
+              তৈরিতে: Dipto Howlader Prethul
+            </a>
+            <span className="hidden text-slate-700 sm:inline" aria-hidden="true">|</span>
+            <a
+              href="https://portfolio-pkdk.onrender.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-gold-400/25 bg-gold-400/10 px-4 py-1.5 font-medium text-gold-300 transition hover:border-gold-400/50 hover:bg-gold-400 hover:text-navy-950"
+            >
+              ওয়েবসাইটের জন্য আমার সঙ্গে যোগাযোগ করুন
+            </a>
+          </div>
         </div>
       </footer>
     </>
