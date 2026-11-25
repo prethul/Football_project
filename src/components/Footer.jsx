@@ -1,128 +1,145 @@
 import { Link } from "react-router-dom";
-import { MapPin, Mail, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Share2 } from "lucide-react";
 import Logo from "./Logo";
-import { contacts, contactInfo, socialLinks, navLinks, tournament } from "../data/tournament";
+import { contacts, contactInfo } from "../data/tournament";
 import { toBn } from "../utils/validation";
 
-// lucide-react no longer ships brand icons, so small inline SVGs are used.
-const socialIcons = {
-  facebook: (
-    <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z" />
-  ),
-  youtube: (
-    <path d="M21.6 7.2a2.5 2.5 0 0 0-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.83.43A2.5 2.5 0 0 0 2.4 7.2C2 8.78 2 12 2 12s0 3.22.4 4.8a2.5 2.5 0 0 0 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.83-.43a2.5 2.5 0 0 0 1.77-1.77C22 15.22 22 12 22 12s0-3.22-.4-4.8zM10 15V9l5.2 3z" />
-  ),
-  instagram: (
-    <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM17.5 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-  ),
-};
+function scrollToContact(event) {
+  event.preventDefault?.();
+  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-navy-950">
-      <div className="h-1 bg-gradient-to-r from-neon-500 via-gold-400 to-neon-500" />
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div>
-          <Logo />
-          <p className="mt-4 text-sm leading-relaxed text-slate-400">
-            {tournament.organizerFullBn} আয়োজিত {tournament.nameBn}। মাঠে নামুন, নিজের সেরাটা দিন।
-          </p>
-          <div className="mt-5 flex gap-3">
-            {socialLinks.map((s) => (
+    <>
+      <section id="contact" className="scroll-mt-20 bg-navy-900 py-16 sm:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <span className="mb-4 inline-flex rounded-full border border-neon-400/30 bg-neon-400/10 px-4 py-1 text-sm font-semibold text-neon-300">
+              যোগাযোগ
+            </span>
+            <h2 className="text-3xl font-extrabold text-white sm:text-4xl">আমাদের সঙ্গে যোগাযোগ করুন</h2>
+            <p className="mx-auto mt-4 max-w-3xl leading-relaxed text-slate-300">
+              টুর্নামেন্ট সংক্রান্ত যেকোনো তথ্য, স্পনসরশিপ, নিবন্ধন কিংবা সহযোগিতার জন্য আমাদের সঙ্গে যোগাযোগ করুন। আমরা আপনার সঙ্গে কথা বলতে আগ্রহী।
+            </p>
+          </div>
+
+          <div className="mt-9 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {contacts.slice(0, 2).map((contact) => (
               <a
-                key={s.key}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={s.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-slate-300 transition hover:bg-neon-400 hover:text-navy-950"
+                key={contact.phone}
+                href={`tel:${contact.phone}`}
+                className="card-surface group rounded-2xl p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-neon-400/40"
               >
-                <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
-                  {socialIcons[s.key]}
-                </svg>
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-neon-400/10 text-neon-300 transition group-hover:bg-neon-400 group-hover:text-navy-950">
+                  <Phone className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <p className="mt-4 text-sm text-slate-400">যোগাযোগ নম্বর</p>
+                <p className="mt-1 font-bold text-white">{contact.display}</p>
               </a>
             ))}
+
+            {contactInfo.email ? (
+              <a href={`mailto:${contactInfo.email}`} className="card-surface group rounded-2xl p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-gold-400/40">
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gold-400/10 text-gold-300">
+                  <Mail className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <p className="mt-4 text-sm text-slate-400">ইমেইল</p>
+                <p className="mt-1 break-all font-bold text-white">{contactInfo.email}</p>
+              </a>
+            ) : (
+              <div className="card-surface rounded-2xl p-5 text-center">
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-gold-400/10 text-gold-300">
+                  <Mail className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <p className="mt-4 text-sm text-slate-400">ইমেইল</p>
+                <p className="mt-1 font-bold text-white">ঘোষণা করা হবে</p>
+              </div>
+            )}
+
+            {contactInfo.facebookUrl ? (
+              <a href={contactInfo.facebookUrl} target="_blank" rel="noreferrer" className="card-surface group rounded-2xl p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-sky-400/10 text-sky-300">
+                  <Share2 className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <p className="mt-4 text-sm text-slate-400">ফেসবুক পেজ</p>
+                <p className="mt-1 font-bold text-white">পেজ দেখুন</p>
+              </a>
+            ) : (
+              <div className="card-surface rounded-2xl p-5 text-center">
+                <span className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-sky-400/10 text-sky-300">
+                  <Share2 className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <p className="mt-4 text-sm text-slate-400">ফেসবুক পেজ</p>
+                <p className="mt-1 font-bold text-white">ঘোষণা করা হবে</p>
+              </div>
+            )}
+          </div>
+
+          {contacts[0] && (
+            <div className="mt-5 text-center">
+              <a
+                href={`https://wa.me/88${contacts[0].phone}`}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-neon-400/40 bg-neon-400/10 px-6 py-3 font-semibold text-neon-300 transition hover:-translate-y-0.5 hover:bg-neon-400 hover:text-navy-950"
+              >
+                <MessageCircle className="h-5 w-5" aria-hidden="true" />
+                হোয়াটসঅ্যাপে যোগাযোগ করুন
+              </a>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10 bg-navy-950">
+        <div className="h-1 bg-gradient-to-r from-neon-500 via-gold-400 to-neon-500" />
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+          <div>
+            <Logo />
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              খেলাধুলার মাধ্যমে বন্ধুত্ব, ঐক্য ও ভ্রাতৃত্বের বন্ধন গড়ে তোলাই আমাদের লক্ষ্য।
+            </p>
+          </div>
+
+          <div>
+            <h3 className="mb-4 text-lg font-semibold text-white">দ্রুত লিংক</h3>
+            <ul className="space-y-2">
+              <li><Link to="/" className="text-slate-400 transition hover:text-neon-300">হোম</Link></li>
+              <li><Link to="/tournament" className="text-slate-400 transition hover:text-neon-300">দলসমূহ</Link></li>
+              <li><Link to="/matches" className="text-slate-400 transition hover:text-neon-300">ম্যাচের সূচি</Link></li>
+              <li><Link to="/matches" className="text-slate-400 transition hover:text-neon-300">ম্যাচের ফলাফল</Link></li>
+              <li><Link to="/rules" className="text-slate-400 transition hover:text-neon-300">টুর্নামেন্টের নিয়মাবলি</Link></li>
+              <li><Link to="/" onClick={() => window.setTimeout(() => document.getElementById("sponsorship")?.scrollIntoView({ behavior: "smooth" }), 50)} className="text-slate-400 transition hover:text-neon-300">স্পনসরশিপ</Link></li>
+              <li><a href="#contact" onClick={scrollToContact} className="text-slate-400 transition hover:text-neon-300">যোগাযোগ</a></li>
+            </ul>
+          </div>
+
+          <div className="lg:col-span-2">
+            <h3 className="mb-4 text-lg font-semibold text-white">যোগাযোগের তথ্য</h3>
+            <ul className="space-y-3 text-slate-300">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-1 h-5 w-5 shrink-0 text-neon-400" aria-hidden="true" />
+                <span>{contactInfo.address}</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="mt-1 h-5 w-5 shrink-0 text-neon-400" aria-hidden="true" />
+                <span className="flex flex-wrap gap-x-5 gap-y-1">
+                  {contacts.map((contact) => (
+                    <a key={contact.phone} href={`tel:${contact.phone}`} className="hover:text-neon-300">
+                      {contact.name}: {contact.display}
+                    </a>
+                  ))}
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        <div>
-          <h3 className="mb-4 text-lg font-semibold text-white">গুরুত্বপূর্ণ লিংক</h3>
-          <ul className="space-y-2">
-            {navLinks.map((l) => (
-              <li key={l.to}>
-                <Link to={l.to} className="text-slate-400 transition hover:text-neon-300">
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="border-t border-white/10 py-5 text-center text-sm text-slate-500">
+          © {toBn(2026)} KNTs Club. সর্বস্বত্ব সংরক্ষিত।
         </div>
-
-        <div className="lg:col-span-2">
-          <h3 className="mb-4 text-lg font-semibold text-white">যোগাযোগ</h3>
-          <ul className="space-y-3 text-slate-300">
-            <li className="flex items-start gap-3">
-              <MapPin className="mt-1 h-5 w-5 shrink-0 text-neon-400" aria-hidden="true" />
-              <span>{contactInfo.address}</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <Mail className="mt-1 h-5 w-5 shrink-0 text-neon-400" aria-hidden="true" />
-              <span className="break-all">{contactInfo.email}</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <Phone className="mt-1 h-5 w-5 shrink-0 text-neon-400" aria-hidden="true" />
-              <span className="flex flex-wrap gap-x-5 gap-y-1">
-                {contacts.map((c) => (
-                  <a key={c.phone} href={`tel:${c.phone}`} className="hover:text-neon-300">
-                    {c.name}: {c.display}
-                  </a>
-                ))}
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10 py-5 text-center text-sm text-slate-500">
-        © {toBn(new Date().getFullYear())} KNTS Club। সর্বস্বত্ব সংরক্ষিত।
-        <div className="mt-2 leading-relaxed">
-          <a
-            href="https://portfolio-pkdk.onrender.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-neon-300"
-          >
-            Created by Dipto Howlader Prethul
-          </a>
-          <span className="mx-2 text-slate-700">|</span>
-          <a
-            href="https://portfolio-pkdk.onrender.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-neon-300"
-          >
-            Need customized Website?
-          </a>
-          <span> </span>
-          <a
-            href="https://portfolio-pkdk.onrender.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-neon-300"
-          >
-            Contact : https://portfolio-pkdk.onrender.com/
-          </a>
-          <span className="mx-2 text-slate-700">|</span>
-          <a
-            href="https://portfolio-pkdk.onrender.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-neon-300"
-          >
-            see my work
-          </a>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 }

@@ -33,7 +33,8 @@ export default function Matches() {
 
   useEffect(() => {
     getMatches().then((list) => {
-      setGroups(groupMatchesByStatus(list));
+      const configuredMatches = list.filter((m) => m.teamA || m.teamB || m.status === "live" || m.status === "completed");
+      setGroups(groupMatchesByStatus(configuredMatches));
       setHasSample(list.some((m) => m.isSample));
     });
   }, []);

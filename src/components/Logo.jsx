@@ -13,7 +13,7 @@ export default function Logo({ className = "" }) {
           KNTS <span className="text-neon-400">Club</span>
         </span>
         <span className="block text-[11px] font-medium uppercase tracking-[0.2em] text-slate-400">
-          Football League
+          ফুটবল লীগ
         </span>
       </span>
     </Link>

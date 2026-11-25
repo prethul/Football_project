@@ -8,6 +8,7 @@ import Tournament from "./pages/Tournament";
 import Rules from "./pages/Rules";
 import Register from "./pages/Register";
 import Matches from "./pages/Matches";
+import Fixtures from "./pages/Fixtures";
 
 // Scroll to top on every page change
 function ScrollToTop() {
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/tournament" element={<Tournament />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/matches" element={<Matches />} />
+            <Route path="/fixtures" element={<Fixtures />} />
             <Route path="/register" element={<Register />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

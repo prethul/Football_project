@@ -49,8 +49,20 @@ export const contacts = [
 ];
 
 export const contactInfo = {
-  email: "info@knts-club.example", // placeholder
+  email: "", // Not published yet. The UI shows "ঘোষণা করা হবে"
   address: "কড্ডা নান্দুন, ১৪ নং ওয়ার্ড, বাসন, গাজীপুর",
+  facebookUrl: "",
+  facebookLabel: "ফেসবুক পেজ",
+};
+
+export const sponsorship = {
+  heading: "আমাদের টুর্নামেন্টের স্পনসর হতে আগ্রহী?",
+  description:
+    "আমাদের এই ফুটবল টুর্নামেন্টকে আরও সুন্দর ও সফল করে তুলতে আপনিও হতে পারেন আমাদের সহযোগী। ব্যক্তি, প্রতিষ্ঠান কিংবা ব্যবসায়িক প্রতিষ্ঠান—সবার জন্যই রয়েছে আমাদের টুর্নামেন্টের স্পনসর হওয়ার সুযোগ। আপনার সহযোগিতায় স্থানীয় ফুটবল ও তরুণ খেলোয়াড়দের এগিয়ে নেওয়ার এই আয়োজনে যুক্ত হোন।",
+  benefitsHeading: "কেন আমাদের স্পনসর হবেন?",
+  opportunityHeading: "আপনার সহযোগিতাই আমাদের অনুপ্রেরণা",
+  opportunityDescription:
+    "আপনি আমাদের টুর্নামেন্টের প্রধান স্পনসর, সহযোগী স্পনসর কিংবা সাধারণ স্পনসর হিসেবে যুক্ত হতে পারেন। স্পনসরশিপের বিস্তারিত তথ্য এবং সুযোগ-সুবিধা জানতে আমাদের আয়োজকদের সঙ্গে যোগাযোগ করুন।",
 };
 
 // Social links: replace "#" with real URLs.
@@ -67,5 +79,6 @@ export const navLinks = [
   { to: "/tournament", label: "টুর্নামেন্ট" },
   { to: "/rules", label: "নিয়মাবলি" },
   { to: "/matches", label: "ম্যাচ আপডেট" },
+  { to: "/fixtures", label: "ফিক্সচার ও ব্র্যাকেট" },
   { to: "/register", label: "টিম রেজিস্ট্রেশন" },
 ];

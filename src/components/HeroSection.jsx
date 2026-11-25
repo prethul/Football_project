@@ -25,7 +25,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-            KNTS Football League-এ অংশগ্রহণ করুন, নিজের দল নিয়ে মাঠে নামুন এবং জয়ের লড়াইয়ে নিজের সেরাটা দিন।
+            KNTs Club ফুটবল টুর্নামেন্টে অংশগ্রহণ করুন, নিজের দল নিয়ে মাঠে নামুন এবং জয়ের লড়াইয়ে নিজের সেরাটা দিন।
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -9,6 +9,7 @@ import MatchCard from "../components/MatchCard";
 import SectionHeading from "../components/SectionHeading";
 import Button from "../components/Button";
 import { getMatches } from "../services/matchService";
+import SponsorshipSection from "../components/SponsorshipSection";
 
 export default function Home() {
   const [matches, setMatches] = useState([]);
@@ -26,6 +27,7 @@ export default function Home() {
       <HeroSection />
       <TournamentPoster />
       <PrizeSection />
+      <SponsorshipSection />
       <JerseyAnnouncement />
 
       <section className="bg-navy-950 py-16 sm:py-20">
