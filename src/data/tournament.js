@@ -65,6 +65,13 @@ export const sponsorship = {
     "আপনি আমাদের টুর্নামেন্টের প্রধান স্পনসর, সহযোগী স্পনসর কিংবা সাধারণ স্পনসর হিসেবে যুক্ত হতে পারেন। স্পনসরশিপের বিস্তারিত তথ্য এবং সুযোগ-সুবিধা জানতে আমাদের আয়োজকদের সঙ্গে যোগাযোগ করুন।",
 };
 
+export const patron = {
+  eyebrow: "পৃষ্ঠপোষকতায়",
+  name: "আলহাজ্ব মোহাম্মদ তানভীর সিরাজ",
+  role: "১৩ নং ওয়ার্ড কাউন্সিলর পদপ্রার্থী",
+  organization: "সভাপতি, বাসন থানা বিএনপি",
+};
+
 // Social links: replace "#" with real URLs.
 export const socialLinks = [
   { label: "Facebook", href: "#", key: "facebook" },

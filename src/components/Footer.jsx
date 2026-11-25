@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Phone, Share2 } from "lucide-react";
 import Logo from "./Logo";
 import { contacts, contactInfo } from "../data/tournament";
 import { toBn } from "../utils/validation";
+import SponsorPatron from "./SponsorPatron";
 
 function scrollToContact(event) {
   event.preventDefault?.();
@@ -94,6 +95,7 @@ export default function Footer() {
 
       <footer className="border-t border-white/10 bg-navy-950">
         <div className="h-1 bg-gradient-to-r from-neon-500 via-gold-400 to-neon-500" />
+        <SponsorPatron compact />
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
           <div>
             <Logo />
